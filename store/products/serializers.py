@@ -3,12 +3,16 @@ from .models import Cart, CartItem, Product, Category, SubCategory
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    """Категории."""
+
     class Meta:
         model = Category
         fields = ["name", "slug", "image_field"]
 
 
 class SubCategorySerializer(serializers.ModelSerializer):
+    """Подкатегории."""
+
     parent_category = CategorySerializer()
 
     class Meta:
@@ -17,6 +21,8 @@ class SubCategorySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    """Продукты."""
+
     class Meta:
         model = Product
         fields = [
@@ -32,6 +38,8 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class CartItemSerializer(serializers.ModelSerializer):
+    """Продукты в корзине."""
+
     product = ProductSerializer()
 
     class Meta:
@@ -40,6 +48,8 @@ class CartItemSerializer(serializers.ModelSerializer):
 
 
 class CartSerializer(serializers.ModelSerializer):
+    """Корзина."""
+
     items = CartItemSerializer(many=True)
 
     class Meta:

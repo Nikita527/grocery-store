@@ -47,11 +47,15 @@ class SubCategoryAdmin(admin.ModelAdmin):
 
 @register(Cart)
 class CartAdmin(admin.ModelAdmin):
+    """Админ панель для Корзины."""
+
     list_display = ("user",)
     empty_value_display = EMTY_MSG
 
 
 @register(CartItem)
 class CartItemAdmin(admin.ModelAdmin):
+    """Админ панель для продуктов Корзины."""
+
     list_display = ("cart", "product", "quantity")
     empty_value_display = EMTY_MSG

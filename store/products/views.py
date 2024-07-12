@@ -12,21 +12,29 @@ from .serializers import (
 
 
 class CategoryListView(generics.ListAPIView):
+    """Представление каегорий."""
+
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
 
 class SubCategoryListView(generics.ListAPIView):
+    """Представление подкаегорий."""
+
     queryset = SubCategory.objects.all()
     serializer_class = SubCategorySerializer
 
 
 class ProductListView(generics.ListAPIView):
+    """Представление для продуктов."""
+
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
 
 class CartView(APIView):
+    """Представление для корзины."""
+
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
@@ -55,6 +63,8 @@ class CartView(APIView):
 
 
 class CartItemDeleteView(generics.DestroyAPIView):
+    """Удаление объектов из корзины."""
+
     permission_classes = [permissions.IsAuthenticated]
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
